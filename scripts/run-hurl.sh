@@ -64,6 +64,7 @@ if ! curl -fsS "${HOST}" >/dev/null 2>&1; then
 fi
 
 hurl --test tests/hurl/*.hurl \
+  --file-root tests \
   --variable host="${HOST}" \
   --variable api_key_success="test-key-success" \
   --variable api_key_validation="test-key-validation" \
