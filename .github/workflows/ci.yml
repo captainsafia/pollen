@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Type, build, and integration checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install Hurl
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y hurl
+          hurl --version
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run type checks
+        run: npm run typecheck
+
+      - name: Build application
+        run: npm run build
+
+      - name: Run Hurl integration tests
+        run: npm run test:hurl
