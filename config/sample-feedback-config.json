@@ -1,0 +1,32 @@
+{
+  "apiKeys": [
+    {
+      "keyId": "desktop-prod",
+      "keyHash": "8f8f2be5f8f041eced0f39b8f4f3088fb8ecfd5e114f8c4f75e2f59f50f4eb36",
+      "applicationId": "desktop-app",
+      "enabled": true,
+      "allowedRepositories": [
+        "acme/product-feedback"
+      ]
+    }
+  ],
+  "repositories": [
+    {
+      "name": "acme/product-feedback",
+      "installationId": 12345678,
+      "enabled": true,
+      "defaultLabels": [
+        "feedback",
+        "triage"
+      ],
+      "labelsByType": {
+        "bug_report": [
+          "bug"
+        ],
+        "feature_request": [
+          "enhancement"
+        ]
+      }
+    }
+  ]
+}
