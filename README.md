@@ -78,7 +78,7 @@ The service uses an external backing store in production (`RATE_LIMIT_BACKEND=up
 - allowlist: `png`, `jpg/jpeg`, `webp`, `txt/log`, `json`, `xml`, `yaml/yml`, optional `zip`
 - dangerous file types are rejected
 
-Accepted files are streamed to object storage (S3-compatible). Issue bodies include artifact links and optional redacted excerpts for small text files.
+Accepted files are streamed to **Vercel Blob**. Issue bodies include artifact links and optional redacted excerpts for small text files.
 
 ## GitHub integration
 
@@ -103,7 +103,8 @@ For deployment to Vercel, configure all required variables from `.env.example`, 
 - `FEEDBACK_API_KEYS_JSON`
 - `FEEDBACK_REPOSITORIES_JSON`
 - `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN`
-- storage variables (`OBJECT_STORAGE_*`) when `ATTACHMENT_STORAGE_BACKEND=s3`
+- `BLOB_READ_WRITE_TOKEN` (required when `ATTACHMENT_STORAGE_BACKEND=vercel_blob`)
+- `BLOB_KEY_PREFIX` (optional key namespace prefix)
 - GitHub App credentials (`GITHUB_APP_ID`, `GITHUB_APP_PRIVATE_KEY`)
 
 ## Local development
